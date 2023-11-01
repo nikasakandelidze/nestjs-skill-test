@@ -1,12 +1,12 @@
-import { Column, Entity } from "typeorm";
+import { ChildEntity, Column, OneToMany } from "typeorm";
 import { User } from "./user.entity";
-import { Photo } from "./photo.entity";
+import { Photo } from "../../media/entities/photo.entity";
 
-@Entity()
+@ChildEntity("Client")
 export class Client extends User {
   @Column()
   avatar: string;
 
-  @Column({ type: "jsonb" })
-  photos: Array<Photo>;
+  @OneToMany(() => Photo, (photo) => photo.user)
+  photos: Photo[];
 }

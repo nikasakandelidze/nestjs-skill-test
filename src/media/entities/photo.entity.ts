@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { User } from "./user.entity";
+import { Client } from "../../user/entities/client.entity";
 
 @Entity()
 export class Photo {
@@ -19,8 +19,8 @@ export class Photo {
   @Column()
   url: string;
 
-  @ManyToOne(() => User)
-  user: User;
+  @ManyToOne(() => Client, (client) => client.photos)
+  user: Client;
 
   @CreateDateColumn({
     name: "created_at",
