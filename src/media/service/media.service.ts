@@ -14,7 +14,7 @@ export class MediaService {
   ): Promise<Photo[]> {
     const medias: CreateMediaDto[] = files.photos.map((file) => {
       return {
-        name: file.filename,
+        name: file.originalname,
         userId,
         url: `${file.filename}`, //change this part
       };
