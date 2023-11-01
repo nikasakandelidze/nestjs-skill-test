@@ -3,6 +3,13 @@ export const ALREADY_EXISTS_MESSAGE = (
   property: string = "id",
 ) => `${entity} with specified ${property} already exists`;
 
+export const NOT_FOUND_MESSAGE = (
+  entity: string = "user",
+  property: string = "id",
+) => `${entity} with specified ${property} not found`;
+
+export const AUTHORIZATION_ERROR_MESSAGE = "Email or Password is not correct";
+
 export const DEFAULT_AVATAR = "https://i.pravatar.cc/300";
 
 export enum Roles {

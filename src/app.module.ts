@@ -7,6 +7,7 @@ import { AuthModule } from "./auth/auth.module";
 import { MediaModule } from "./media/media.module";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from "path";
+import { JwtModule } from "@nestjs/jwt";
 
 @Module({
   imports: [
@@ -17,6 +18,10 @@ import { join } from "path";
       envFilePath:
         process.env.NODE_ENV === "development" ? ".env.development" : ".env", //In case of production no development flag will be passed and .env.development will be ignored
       isGlobal: true,
+    }),
+    JwtModule.register({
+      global: true,
+      signOptions: { expiresIn: "1d" },
     }),
     TypeOrmModule.forRootAsync({ useClass: TypeOrmConfigService }),
     UserModule,
