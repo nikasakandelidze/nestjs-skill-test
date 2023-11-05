@@ -6,7 +6,7 @@ import { S3Service } from "./service/s3.service";
 
 @Module({
   imports: [TypeOrmModule.forFeature([Photo])],
-  exports: [TypeOrmModule, MediaService],
+  exports: [TypeOrmModule, MediaService, S3Service],
   providers: [MediaService, S3Service],
 })
 export class MediaModule {}

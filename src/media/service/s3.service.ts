@@ -1,6 +1,6 @@
 import { Injectable, Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import { S3 } from "@aws-sdk/client-s3";
+import { GetObjectCommand, S3 } from "@aws-sdk/client-s3";
 import { Readable } from "stream";
 import { Upload } from "@aws-sdk/lib-storage";
 
@@ -47,5 +47,16 @@ export class S3Service {
       console.error("Error uploading file:", error);
       throw new Error("Error uploading file");
     }
+  }
+
+  async getMedia(fileName: string): Promise<Readable> {
+    const params = {
+      Bucket: this.bucketName,
+      Key: fileName,
+    };
+
+    const command = new GetObjectCommand(params);
+    const response = await this.s3.send(command);
+    return response.Body as Readable;
   }
 }
