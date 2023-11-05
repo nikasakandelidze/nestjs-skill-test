@@ -36,7 +36,7 @@ export class AuthService {
       if (!client) {
         registerDto.password = await bcrypt.hash(registerDto.password, 10);
         registerDto.role = Roles.CLIENT;
-        // Maybe change this with local file and serving it from assets to not be dependant on WEB
+        // Maybe change this with local file and serving it from assets to not be dependant on WEB resources
         if (!registerDto.avatar) {
           registerDto.avatar = DEFAULT_AVATAR;
         }

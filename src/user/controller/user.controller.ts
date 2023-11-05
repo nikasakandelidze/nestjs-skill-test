@@ -1,12 +1,16 @@
-import { Controller, Post } from "@nestjs/common";
+import { Controller, UseGuards, Request, Get } from "@nestjs/common";
+import { AuthGuard } from "../../auth/service/crypto.service";
+import { UserService } from "../service/user.service";
 
 @Controller("/api/users")
 export class UserController {
-  @Post("me")
-  async getUserInformation() {
-    return { ok: true };
-  }
+  constructor(private readonly userService: UserService) {}
 
-  @Post("/api/login")
-  async login() {}
+  @Get("me")
+  @UseGuards(AuthGuard)
+  async getUserInformation(@Request() request: any) {
+    console.log(123);
+    const user: { sub: string } = request["user"];
+    return this.userService.getUserInformation(user.sub);
+  }
 }
