@@ -4,12 +4,14 @@ This project is developed as a part of the NestJS Skill Test to demonstrate the 
 
 ## Development Guide
 
-### Pre requisites
+### Pre requisites for Dev Setup
 
 - NodeJS installed V17.0.0 or higher
 - Docker & Docker-Compose ( Optional, Read below to understand what's the optionality condition )
 
 To run and use the API successfully on your development machine follow next steps:
+
+### Dev Setup
 
 - Clone the repository: `git clone https://github.com/nikasakandelidze/nestjs-skill-test`
 - Enter the cloned directory of the project: `cd nestjs-skill-test`
@@ -20,12 +22,18 @@ To run and use the API successfully on your development machine follow next step
 
 ## Running the app Guide
 
-To run the application successfully on your machine of preference there are couple of different ways ( all of them with their own pre-requisites):
-
-### Pre-requisites For Running With Docker-Compose
+### Pre-requisites For Running the API ( Easiest way )
 
 - Docker
 - Docker-compose
+
+### Running the API ( Easiest way )
+
+- Clone the repository: `git clone https://github.com/nikasakandelidze/nestjs-skill-test`
+- Enter the cloned directory of the project: `cd nestjs-skill-test`
+- Open docker-compose file and fill in the values for AWS & JWT specific env variables so that container created and used in docker-compose composition operates correctly. ( These values are marked with comments for you be easily able to fill them out )
+- In the root of the project run: `docker-compose up -d`
+- The application should be running on the: http://localhost:3000
 
 ## Stay in touch
 
