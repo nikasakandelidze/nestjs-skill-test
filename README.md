@@ -1,73 +1,33 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## Introduction
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is developed as a part of the NestJS Skill Test to demonstrate the capability of creating a robust backend service using NestJS framework version 10.0 or higher. The project employs PostgreSQL as the database, with TypeORM as the ORM of choice. Authentication is handled using plain JWT mechanism.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Development Guide
 
-## Description
+### Pre requisites
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- NodeJS installed V17.0.0 or higher
+- Docker & Docker-Compose ( Optional, Read below to understand what's the optionality condition )
 
-## Installation
+To run and use the API successfully on your development machine follow next steps:
 
-```bash
-$ npm install
-```
+- Clone the repository: `git clone https://github.com/nikasakandelidze/nestjs-skill-test`
+- Enter the cloned directory of the project: `cd nestjs-skill-test`
+- Install the dependencies: `npm i`
+- Edit .env.development file to fill it with AWS related and JWT related ENV_VARIABLE values
+  - Note that database config value specified in .env.development should only by used if you'll run database container by: `docker-compose up -d nestskill-dev-db`, in any other case please update DATABASE related env variable values accordingly.
+- Run the app: `npm run start:dev`
 
-## Running the app
+## Running the app Guide
 
-```bash
-# development
-$ npm run start
+To run the application successfully on your machine of preference there are couple of different ways ( all of them with their own pre-requisites):
 
-# watch mode
-$ npm run start:dev
+### Pre-requisites For Running With Docker-Compose
 
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- Docker
+- Docker-compose
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- Author - [Nika Sakandelidze](https://www.linkedin.com/in/nikoloz-sakandelidze-004720189/)
+- Website - [Nika's Personal Page](https://sakandelidze.notion.site/Nika-s-personal-page-156bb188536c48e395f7598619dd0ab8?pvs=4)

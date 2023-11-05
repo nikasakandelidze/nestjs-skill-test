@@ -25,7 +25,7 @@ export class AuthController {
     @UploadedFiles()
     files: UploadFiles,
   ) {
-    return this.authService.registerUser(registerDto, files);
+    return this.authService.registerClient(registerDto, files);
   }
 
   @Post("login")

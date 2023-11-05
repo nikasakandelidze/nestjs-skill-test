@@ -16,3 +16,5 @@ export const DEFAULT_AVATAR = "https://i.pravatar.cc/300";
 export enum Roles {
   CLIENT = "CLIENT",
 }
+
+export const CRYPTO_SALT = 10;

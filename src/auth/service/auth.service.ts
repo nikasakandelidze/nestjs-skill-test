@@ -11,6 +11,7 @@ import { Client } from "../../user/entities/client.entity";
 import {
   ALREADY_EXISTS_MESSAGE,
   AUTHORIZATION_ERROR_MESSAGE,
+  CRYPTO_SALT,
   DEFAULT_AVATAR,
   NOT_FOUND_MESSAGE,
   Roles,
@@ -28,15 +29,18 @@ export class AuthService {
     private readonly cryptoService: CryptoService,
   ) {}
 
-  async registerUser(registerDto: RegisterDto, files: UploadFiles) {
+  async registerClient(registerDto: RegisterDto, files: UploadFiles) {
     return this.dataSource.transaction(async (manager: EntityManager) => {
       const client: Client = await manager.findOneBy(Client, {
         email: registerDto.email,
       });
       if (!client) {
-        registerDto.password = await bcrypt.hash(registerDto.password, 10);
+        registerDto.password = await bcrypt.hash(
+          registerDto.password,
+          CRYPTO_SALT,
+        );
         registerDto.role = Roles.CLIENT;
-        // Maybe change this with local file and serving it from assets to not be dependant on WEB resources
+        // TODO: Maybe change this later with local file and serving it from assets to not be dependant on WEB resources
         if (!registerDto.avatar) {
           registerDto.avatar = DEFAULT_AVATAR;
         }
