@@ -39,6 +39,7 @@ export class CryptoService {
 @Injectable()
 export class AuthGuard implements CanActivate {
   private JWT_SECRET: string;
+  private logger: Logger = new Logger(AuthGuard.name);
 
   constructor(
     private readonly jwtService: JwtService,
@@ -61,7 +62,7 @@ export class AuthGuard implements CanActivate {
       // so that we can access it in our route handlers
       request["user"] = payload;
     } catch (err) {
-      console.log(err);
+      this.logger.warn(err);
       throw new UnauthorizedException();
     }
     return true;

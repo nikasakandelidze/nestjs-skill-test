@@ -8,7 +8,7 @@ import {
 import { RegisterDto } from "./dto/register.dto";
 import { AuthService } from "../service/auth.service";
 import { LoginDto } from "./dto/login.dto";
-import { STORAGE_OPTIONS } from "../../config/file-upload.config";
+import { S3_STORAGE_OPTIONS } from "../../config/file-upload.config";
 import { FileFieldsInterceptor } from "@nestjs/platform-express";
 import { UploadFiles } from "../../utils/types";
 
@@ -17,7 +17,9 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post("register")
-  @UseInterceptors(FileFieldsInterceptor([{ name: "photos" }], STORAGE_OPTIONS))
+  @UseInterceptors(
+    FileFieldsInterceptor([{ name: "photos" }], S3_STORAGE_OPTIONS),
+  )
   async register(
     @Body() registerDto: RegisterDto,
     @UploadedFiles()

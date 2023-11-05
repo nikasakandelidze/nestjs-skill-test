@@ -9,7 +9,6 @@ export class UserController {
   @Get("me")
   @UseGuards(AuthGuard)
   async getUserInformation(@Request() request: any) {
-    console.log(123);
     const user: { sub: string } = request["user"];
     return this.userService.getUserInformation(user.sub);
   }

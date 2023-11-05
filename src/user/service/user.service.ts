@@ -8,7 +8,6 @@ export class UserService {
   constructor(private readonly dataSource: DataSource) {}
 
   async getUserInformation(userId: string) {
-    console.log(userId);
     return this.dataSource.transaction(async (manager: EntityManager) => {
       const client: Client = await manager.findOne(Client, {
         where: { id: userId },

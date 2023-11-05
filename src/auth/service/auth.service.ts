@@ -45,8 +45,8 @@ export class AuthService {
         );
         let photos: Photo[] = [];
         if (files.photos.length) {
-          photos = await this.mediaService.storeMediaFromUploadedFiles(
-            files,
+          photos = await this.mediaService.saveFilesForClient(
+            files.photos,
             createdClient.id,
             manager,
           );
