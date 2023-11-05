@@ -13,6 +13,27 @@ services:
       - nestskill-vol:/var/lib/postgresql/data
     networks:
       - nestskill-network
+  nestskill-dev-api:
+    build:
+      context: .
+    environment:
+      - PORT=3000
+      - POSTGRES_HOST=nestskill-dev-db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=nestskill-dev-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - AWS_SECRET_KEY= # Fill this line
+      - AWS_ACCESS_ID= # Fill this line
+      - AWS_BUCKET_REGION= # Fill this line
+      - AWS_BUCKET_NAME= # Fill this line
+      - JWT_SECRET= # Fill this line
+    ports:
+      - "3000:3000"
+    depends_on:
+      - nestskill-dev-db
+    networks:
+      - nestskill-network
 volumes:
   nestskill-vol:
     driver: local
