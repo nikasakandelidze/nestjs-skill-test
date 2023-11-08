@@ -2,6 +2,8 @@ import { MediaService } from "./../../media/service/media.service";
 import {
   BadRequestException,
   Injectable,
+  Logger,
+  ServiceUnavailableException,
   UnauthorizedException,
 } from "@nestjs/common";
 import { RegisterDto } from "../controller/dto/register.dto";
@@ -23,6 +25,8 @@ import { CryptoService } from "./crypto.service";
 
 @Injectable()
 export class AuthService {
+  private logger: Logger = new Logger(AuthService.name);
+
   constructor(
     private dataSource: DataSource,
     private mediaService: MediaService,
@@ -48,12 +52,19 @@ export class AuthService {
           manager.create(Client, { ...registerDto }),
         );
         let photos: Photo[] = [];
-        if (files.photos.length) {
-          photos = await this.mediaService.saveFilesForClient(
-            files.photos,
-            createdClient.id,
-            manager,
-          );
+        if (files.photos && files.photos.length) {
+          try {
+            photos = await this.mediaService.saveFilesForClient(
+              files.photos,
+              createdClient.id,
+              manager,
+            );
+          } catch (err) {
+            this.logger.warn(err);
+            throw new ServiceUnavailableException({
+              message: "Please try uploading images later",
+            });
+          }
         }
         delete createdClient["password"];
         photos = photos.map((photo) => {
