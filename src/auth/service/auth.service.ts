@@ -52,7 +52,7 @@ export class AuthService {
           manager.create(Client, { ...registerDto }),
         );
         let photos: Photo[] = [];
-        if (files.photos && files.photos.length) {
+        if (files?.photos && files?.photos.length) {
           try {
             photos = await this.mediaService.saveFilesForClient(
               files.photos,
